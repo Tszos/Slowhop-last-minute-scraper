@@ -150,8 +150,7 @@ def scrap(driver) -> list[dict]:
     pages_quantity = get_pages_quantity(driver)
     for page in range(1, pages_quantity + 1):
         driver.get(WEBSITE.format(page=page))
-        wait = WebDriverWait(driver, 10)
-        tiles = set_wait(wait, 10, 'grid-results__tiles')
+        tiles = set_wait(driver, 10, 'grid-results__tiles')
         offers = get_offers(tiles)
         for offer in offers:
             try:

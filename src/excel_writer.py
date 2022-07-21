@@ -22,6 +22,6 @@ def create_excel(workbook_name: str, worksheet_name: str, headers_list: list, da
                 worksheet.write(index1 + 1, index2, e[h], green_bg)
             else:
                 worksheet.write(index1 + 1, index2, e[h])
-                worksheet.autofilter('A1')
+            worksheet.autofilter('A1:P1')
 
     workbook.close()
