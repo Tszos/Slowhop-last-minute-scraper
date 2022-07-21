@@ -8,15 +8,23 @@ from selenium.webdriver.support import expected_conditions as EC
 from src.config import PATH, WEBSITE, MONTHS_TO_NUMBERS, DAY_NUMS_TO_DAYS, BASE_WEBSITE, PATH_BETA, YEAR, MONTH
 
 
-def get_driver():
+def get_driver_beta():
     """ creates selenium driver"""
     # path is set to beta version (104) of chrome since current stable version (103) is bugged.
-    # if chrome version 104 is out update chrome and change path to stable version
+    # if chrome version 104 is out use get_driver()
 
     service = Service(executable_path=PATH_BETA)
     options = webdriver.ChromeOptions()
     options.binary_location = '/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome Beta'
     driver = webdriver.Chrome(service=service, options=options)
+    return driver
+
+
+def get_driver():
+    """ driver for stable chrome version  - use when you update chrome to 104 and get stable driver"""
+
+    service = Service(executable_path=PATH)
+    driver = webdriver.Chrome(service=service)
     return driver
 
 
